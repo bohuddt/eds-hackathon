@@ -1,27 +1,196 @@
-.cards > ul {
+.cards .carousel-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.cards .carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.cards .carousel-track {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.cards > ul > li {
+.cards .carousel-slide {
+  min-width: 100%;
   border: 1px solid #dadada;
   background-color: var(--background-color);
-}
-
-.cards .cards-card-body {
-  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .cards .cards-card-image {
   line-height: 0;
+  overflow: hidden;
 }
 
-.cards > ul > li img {
+.cards .carousel-slide img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 300px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cards .carousel-slide:hover img {
+  transform: scale(1.05);
+}
+
+.cards .cards-card-body {
+  margin: 24px;
+  min-height: 120px;
+  background: var(--card-bg, linear-gradient(135deg, #000 0%, #111 100%));
+  color: var(--text-color, #00ff00);
+  padding: 20px;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.cards .cards-card-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, transparent 79px, #00ff0020 81px, transparent 82px),
+    linear-gradient(0deg, transparent 19px, #00ff0010 21px, transparent 22px);
+  background-size: 82px 22px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.cards .cards-card-body h1,
+.cards .cards-card-body h2,
+.cards .cards-card-body h3,
+.cards .cards-card-body h4,
+.cards .cards-card-body h5,
+.cards .cards-card-body h6 {
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff0080;
+  margin: 0 0 12px 0;
+  font-weight: bold;
+}
+
+.cards .cards-card-body h1 {
+  text-align: center;
+}
+
+.cards .cards-card-body p {
+  color: #00ff00;
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+  text-shadow: 0 0 5px #00ff0060;
+}
+
+.cards .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 255, 0, 0.8);
+  color: #000;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+}
+
+.cards .carousel-btn:hover {
+  background: #00ff00;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 255, 0, 0.5);
+}
+
+.cards .carousel-prev {
+  left: 15px;
+}
+
+.cards .carousel-next {
+  right: 15px;
+}
+
+.cards .carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  background: linear-gradient(135deg, #000 0%, #111 100%);
+}
+
+.cards .carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #00ff00;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cards .carousel-indicator::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00ff00;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cards .carousel-indicator.active::before {
+  opacity: 1;
+}
+
+.cards .carousel-indicator:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+  .cards .carousel-container {
+    margin: 0 16px;
+  }
+  
+  .cards .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .cards .carousel-prev {
+    left: 10px;
+  }
+  
+  .cards .carousel-next {
+    right: 10px;
+  }
+  
+  .cards .cards-card-body {
+    margin: 16px;
+    padding: 16px;
+  }
 }

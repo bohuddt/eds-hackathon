@@ -1,9 +1,20 @@
-# Your Project's Title...
-Your project's description...
+# EDS Hackathon Bo Hu
+
+A project for EDS Hackathon
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.aem.page/
-- Live: https://main--{repo}--{owner}.aem.live/
+- Preview: https://main--eds-hackathon--bohuddt.aem.page/
+- Live: https://main--eds-hackathon--bohuddt.aem.live/
+
+## Implementations
+
+- AI Chatbot:  An AI chatbot to answer user questions of Adobe Product
+- Carousel style products cards
+- Dark/Light theme toggle button
+
+
+
+
 
 ## Documentation
 
@@ -23,6 +34,11 @@ npm i
 
 ```sh
 npm run lint
+```
+
+run it locally
+```
+./node_modules/.bin/aem up
 ```
 
 ## Local development
